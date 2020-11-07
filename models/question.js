@@ -16,13 +16,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         }
        
-    }),
+    });
     // const UserId = this.sequelize.define('UserId', {
     //     type:DataTypes.INTEGER,
         
     // });
     // Question.belongsTo(UserId, {foreignKey: 'fk_UserId', tagetKey: 'id'});
-
-
     return Question
 };

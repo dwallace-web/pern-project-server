@@ -15,7 +15,7 @@ router.post('/signup', (req, res) => {
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "14d" });
             res.status(200).json({
                 user: user,
-                message: "The workout user was created",
+                message: "The Q&A user was created",
                 sessionToken: token
             })
         })
@@ -37,7 +37,7 @@ router.post('/signin', (req, res) => {
 
                         res.status(200).json({
                             user: user,
-                            message: "workout user has been authenticated",
+                            message: "Q&A user has been authenticated",
                             sessionToken: token
                         })
 
