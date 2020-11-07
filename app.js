@@ -33,7 +33,6 @@ app.get('/', (request, response) => response.render('index'));
 const usercontroller = require('./controllers/usercontroller')
 app.use('/user', usercontroller)
 
-
 const questioncontroller = require('./controllers/questioncontroller')
 app.use('question', questioncontroller)
 

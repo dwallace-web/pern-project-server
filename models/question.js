@@ -22,7 +22,5 @@ module.exports = (sequelize, DataTypes) => {
         
     // });
     // Question.belongsTo(UserId, {foreignKey: 'fk_UserId', tagetKey: 'id'});
-
-
     return Question
 };
