@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         }
        
-    }),
+    });
     // const UserId = this.sequelize.define('UserId', {
     //     type:DataTypes.INTEGER,
         
