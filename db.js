@@ -6,7 +6,7 @@ const database = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
 });
 
 database.authenticate()
-    .then(() => console.log('postgres db is connected'))
+    .then(() => console.log('POSTGRES Connection confirmed! Database has been connected'))
     .catch(err=> console.log(err));
  
 module.exports = database;
