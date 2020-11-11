@@ -48,8 +48,10 @@ router.put("/:entryId", validateSession, function (req, res) {
 
 /* ***************DELETE QUESTIONS************** */
 
-router.delete("/delete/:id", validateSession, function (req, res) {
-    const query = { where: { id: req.params.id, owner: req.user.id } };
+router.delete("/:entryId", validateSession, function (req, res) {
+    
+    const query = { where: { id: req.params.entryId, owner: req.user.id } };
+
     Question.destroy(query)
         .then(() => res.status(200).json({ message: "Question Entry Removed" }))
         .catch((err) => res.status(500).json({ error: err }));
