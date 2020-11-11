@@ -3,22 +3,21 @@ const Question = require('../db').import('../models/question');
 
 
 
-// /* *********GET ALL QUESTIONS********* */
+/* *********GET ALL QUESTIONS********* */
 
-// router.get("/", (req, res) => {
-//     Question.findAll()
-//     .then(questions => res.status(200).json(questions))
-//     .catch(err => res.status(500).json({ error: err}))
-// });
+router.get("/", (req, res) => {
+    Question.findAll()
+    .then(questions => res.status(200).json(questions))
+    .catch(err => res.status(500).json({ error: err}))
+});
 
 const validateSession = require('../middleware/validate-session');
 
 
 
-
 /* *************QUESTION CREATE*************** */
 
-router.post('/create', validateSession, (req, res) => {
+router.post('/', validateSession, (req, res) => {
     const questionEntry = {
         title: req.body.question.title,
         category: req.body.question.category,
@@ -32,13 +31,13 @@ router.post('/create', validateSession, (req, res) => {
 
 /* ***************EDIT QUESTIONS************** */
 
-router.put("/update/:entryId", validateSession, function (req, res) {
+router.put("/:entryId", validateSession, function (req, res) {
     const updateQuestionEntry = {
         title: req.body.question.title,
-        date: req.body.question.date,
+        category: req.body.question.category,
         entry: req.body.question.entry,
     };
-
+    
     const query = { where: { id: req.params.entryId, owner: req.user.id } };
 
     Question.update(updateQuestionEntry, query)
@@ -60,12 +59,11 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 
 
 
-
 // /* **************GET QUESTIONS BY USER************** */
 
 // router.get("/mine", validateSession, (req, res) => {
 //     let userid = req.user.id
-//     Question.findAll({
+//     Question.fgrouindAll({
 //         where: { owner: userid }
 //     })
 //     .then(questions => res.status(200).json(questions))
