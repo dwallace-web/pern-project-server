@@ -41,7 +41,7 @@ router.put("/:entryId", validateSession, function (req, res) {
     const query = { where: { id: req.params.entryId, owner: req.user.id } };
 
     Question.update(updateQuestionEntry, query)
-        .then((questions) => res.status(200).json(questions))
+        .then(questions => res.status(200).json({message: 'Question sucessfully edited'}))
         .catch((err) => res.status(500).json({ error: err }));
 });
 
@@ -55,6 +55,18 @@ router.delete("/:entryId", validateSession, function (req, res) {
     Question.destroy(query)
         .then(() => res.status(200).json({ message: "Question Entry Removed" }))
         .catch((err) => res.status(500).json({ error: err }));
+});
+
+/* **************GET QUESTIONS BY CATEGORY*************** */
+
+router.get('/:category', function (req, res) {
+    let category = req.params.category;
+
+    Question.findAll({
+        where: { category: category }
+    })
+        .then(questions => res.status(200).json(questions))
+        .catch(err => resstatus(500).json({ error: err }))
 });
 
 /**EXTRA ENDPOINTS */
@@ -83,18 +95,5 @@ router.delete("/:entryId", validateSession, function (req, res) {
 //     .then(questions => res.status(200).json(questions))
 //     .catch(err => res.status(500).json({ error: err}))
 // });
-
-/* **************GET QUESTIONS BY CATEGORY*************** */
-
-router.get('/:category', function (req, res) {
-    let category = req.params.category;
-
-    Question.findAll({
-        where: { category: category }
-    })
-        .then(questions => res.status(200).json(questions))
-        .catch(err => resstatus(500).json({ error: err }))
-});
-
 
 module.exports = router;
