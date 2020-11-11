@@ -27,7 +27,7 @@ const validateSession = require('../middleware/validate-session');
     router.put("/update/:entryId", validateSession, function (req, res) {
         const updateQuestionEntry = {
             title: req.body.question.title,
-            date: req.body.question.date,
+            category: req.body.question.category,
             entry: req.body.question.entry,
         };
     

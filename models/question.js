@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         category: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            unique: true
+            
+
         },
         entry: {
             type: DataTypes.STRING,
@@ -14,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         owner: {
             type: DataTypes.INTEGER
+            
         }
        
     });
