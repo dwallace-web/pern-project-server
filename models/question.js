@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         owner: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
        
     });
