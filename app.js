@@ -21,6 +21,10 @@ app.use('/user', usercontroller)
 const questioncontroller = require('./controllers/questioncontroller')
 app.use('/question', questioncontroller)
 
+const answercontroller = require('./controllers/answerscontroller');
+app.use('/answer', answercontroller);
+
 //7. import middleware -> CORS headers and validate session
+
 
 app.listen(process.env.PORT, () => console.log(`App is listening on the Port number: ${process.env.PORT}`));
