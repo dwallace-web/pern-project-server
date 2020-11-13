@@ -6,21 +6,35 @@ module.exports = (sequelize, DataTypes) => {
         },
         category: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            unique: true
+            
+
         },
         entry: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        owner: {
-            type: DataTypes.INTEGER
         }
+        // owner: {
+
+        //     type: DataTypes.INTEGER,
+        //     // allowNull: false
+
+        // }
        
     });
-    // const UserId = this.sequelize.define('UserId', {
-    //     type:DataTypes.INTEGER,
-        
+    // const User = sequelize.define('user', {
+    //     username: {
+    //         type: DataTypes.STRING,
+    //         allowNull: true,
+    //         unique: true
+    //     },
+    //     password: {
+    //         type: DataTypes.STRING,
+    //         allowNull: true
+    //     },
     // });
-    // Question.belongsTo(UserId, {foreignKey: 'fk_UserId', tagetKey: 'id'});
+    // Question.belongsTo(User, {foreignKey: 'fk_userid', targetKey: 'id'});
+    
     return Question
 };
