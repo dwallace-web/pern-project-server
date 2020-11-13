@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         },
 
         likes: {
-            type: DataTypes.Integer,
+            type: DataTypes.INTEGER,
             allowNull: true,
         }
         
