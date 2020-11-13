@@ -19,7 +19,7 @@ const usercontroller = require('./controllers/usercontroller')
 app.use('/user', usercontroller)
 
 const questioncontroller = require('./controllers/questioncontroller')
-app.use('question', questioncontroller)
+app.use('/question', questioncontroller)
 
 //7. import middleware -> CORS headers and validate session
 
