@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const database = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
+const database = new Sequelize('pern-project-server', 'postgres', 'password', {
     host: 'localhost',
     dialect: 'postgres'
 });
