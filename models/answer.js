@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         likes: {
             type: DataTypes.INTEGER,
             allowNull: true,
-        },
+        }
+        
        
     });
 

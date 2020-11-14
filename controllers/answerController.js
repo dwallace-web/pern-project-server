@@ -3,13 +3,16 @@ const User = require('../db').import('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
+
+
 ///////////create answer entry /////////////////////
 
 router.post('/create', validateSession, (req, res) => {
     const answerEntry = {
         entry: req.body.entry,
-        owner: req.user.id,
-        questionID: req.question.id,
+        userId: req.user.id,
+        questionId: req.body.questionId
     }
     Answer.create(answerEntry)
         .then(answer => res.status(200).json(answer))
