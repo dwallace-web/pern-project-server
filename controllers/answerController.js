@@ -9,6 +9,7 @@ router.post('/create', validateSession, (req, res) => {
     const answerEntry = {
         entry: req.body.entry,
         owner: req.user.id,
+        questionID: req.question.id,
     }
     Answer.create(answerEntry)
         .then(answer => res.status(200).json(answer))
