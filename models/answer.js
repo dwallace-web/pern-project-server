@@ -1,7 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-    const answers = sequelize.define('answers', {
+    const Answer = sequelize.define('answer', {
         title: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        entry: {
+            type: DataTypes.TEXT,
             allowNull: false
         },
 
@@ -10,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
         }
         
+        
        
     });
 
-    return answers;
+    return Answer;
 }

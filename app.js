@@ -5,9 +5,9 @@ const app = Express();
 //npm install --save-dev nodemon express dotenv pg sequelize jsonwebtoken bcryptjs
 
 const database = require('./db');
-database.sync({force: true}); // to clear all tables on the local device ---> last resort
+// database.sync({force: true}); // to clear all tables on the local device ---> last resort
 
-// database.sync();
+database.sync();
 
 app.use(Express.json());
 app.use(require('./middleware/headers'));
@@ -21,8 +21,8 @@ app.use('/user', usercontroller)
 const questioncontroller = require('./controllers/questioncontroller')
 app.use('/question', questioncontroller)
 
-const answercontroller = require('./controllers/answerscontroller');
-app.use('/answer', answercontroller);
+const answercontroller = require('./controllers/answerController')
+app.use('/answer', answercontroller)
 
 //7. import middleware -> CORS headers and validate session
 
