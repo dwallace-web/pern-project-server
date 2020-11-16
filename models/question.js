@@ -15,14 +15,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         }
-<<<<<<< HEAD
-    });
-
-    Question.associate = models => {
-        Question.hasMany(models.answers)
-    }
-
-=======
         // owner: {
 
         //     type: DataTypes.INTEGER,
@@ -44,6 +36,5 @@ module.exports = (sequelize, DataTypes) => {
     // });
     // Question.belongsTo(User, {foreignKey: 'fk_userid', targetKey: 'id'});
     
->>>>>>> d63bfd66cc389f4bdf72c2a0a2892f1694a4beb5
     return Question
 };
