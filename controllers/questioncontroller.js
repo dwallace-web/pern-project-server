@@ -25,6 +25,7 @@ router.post('/', validateSession, (req, res) => {
         category: req.body.question.category,
         entry: req.body.question.entry,
         owner: req.user.id,
+        userId: req.user.id,
     }
     Question.create(questionEntry)
         .then(question => res.status(200).json(question))
