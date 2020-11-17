@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        entry: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
 
         entry: {
             type: DataTypes.TEXT,
@@ -14,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true,
         }
+        
         
        
     });

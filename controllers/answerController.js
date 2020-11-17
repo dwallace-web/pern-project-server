@@ -2,26 +2,31 @@ const router = require('express').Router();
 const User = require('../db').import('../models/user');
 // const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
+
+const Answer = require('../db').import('../models/answer');
 const validateSession = require('../middleware/validate-session')
-const Answer = require('../db').import('../models/answer')
 const Question = require('../db').import('../models/question')
 
 
 
 ///////////create answer entry /////////////////////
 
-router.post('/create', validateSession, (req, res) => {
+router.post('/', validateSession, (req, res) => {
     const answerEntry = {
             title: req.body.answer.title,
             entry: req.body.answer.entry,
             likes: req.body.answer.likes,
             userId: req.user.id,
             questionId: req.body.answer.questionId
+
     }
     Answer.create(answerEntry)
         .then(answer => res.status(200).json(answer))
         .catch(err => res.status(500).json({ error: err }))
+        
 });
+
+
 
 //////////update/////////////////
 

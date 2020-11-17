@@ -18,11 +18,14 @@ const validateSession = require('../middleware/validate-session');
 /* *************QUESTION CREATE*************** */
 
 router.post('/', validateSession, (req, res) => {
+    
+
     const questionEntry = {
         title: req.body.question.title,
         category: req.body.question.category,
         entry: req.body.question.entry,
         owner: req.user.id,
+        userId: req.user.id,
     }
     Question.create(questionEntry)
         .then(question => res.status(200).json(question))
@@ -31,14 +34,20 @@ router.post('/', validateSession, (req, res) => {
 
 /* ***************EDIT QUESTIONS************** */
 
-router.put("/:entryId", validateSession, function (req, res) {
+router.put("/:id", validateSession, function (req, res) {
+
+    console.log(req.user); 
+
+    const query = { where: { id: req.params.id, owner: req.user.id } };
+    console.log('query---->', query);
+
     const updateQuestionEntry = {
         title: req.body.question.title,
         category: req.body.question.category,
         entry: req.body.question.entry,
     };
     
-    const query = { where: { id: req.params.entryId, owner: req.user.id } };
+    
 
     Question.update(updateQuestionEntry, query)
         .then(questions => res.status(200).json({message: 'Question sucessfully edited'}))
