@@ -1,7 +1,5 @@
 const router = require('express').Router();
 const User = require('../db').import('../models/user');
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
 const Answer = require('../db').import('../models/answer');
 const validateSession = require('../middleware/validate-session')
 const Question = require('../db').import('../models/question')

@@ -7,20 +7,19 @@ module.exports = (sequelize, DataTypes) => {
         category: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true
             
-
+    
         },
         entry: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        owner: {
+
+            type: DataTypes.INTEGER,
+            // allowNull: false
+
         }
-        // owner: {
-
-        //     type: DataTypes.INTEGER,
-        //     // allowNull: false
-
-        // }
        
     });
     
