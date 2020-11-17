@@ -57,9 +57,9 @@ router.put("/:id", validateSession, function (req, res) {
 
 /* ***************DELETE QUESTIONS************** */
 
-router.delete("/:entryId", validateSession, function (req, res) {
+router.delete("/delete/:id", validateSession, function (req, res) {
     
-    const query = { where: { id: req.params.entryId, owner: req.user.id } };
+    const query = { where: { id: req.params.id} };
 
     Question.destroy(query)
         .then(() => res.status(200).json({ message: "Question Entry Removed" }))
