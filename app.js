@@ -15,10 +15,10 @@ app.use(Express.static(__dirname + '/public'));
 
 app.get('/', (request, response) => response.render('index'));
 
-const usercontroller = require('./controllers/usercontroller')
+const usercontroller = require('./controllers/userController')
 app.use('/user', usercontroller)
 
-const questioncontroller = require('./controllers/questioncontroller')
+const questioncontroller = require('./controllers/questionController')
 app.use('/question', questioncontroller)
 
 const answercontroller = require('./controllers/answerController')
