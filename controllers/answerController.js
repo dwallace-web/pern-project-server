@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const User = require('../db').import('../models/user');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-
+// const bcrypt = require('bcryptjs');
+// const jwt = require('jsonwebtoken');
+const validateSession = require('../middleware/validate-session')
+const Answer = require('../db').import('../models/answer')
+const Question = require('../db').import('../models/question')
 
 
 
@@ -10,9 +12,11 @@ const jwt = require('jsonwebtoken');
 
 router.post('/create', validateSession, (req, res) => {
     const answerEntry = {
-        entry: req.body.entry,
-        userId: req.user.id,
-        questionId: req.body.questionId
+            title: req.body.answer.title,
+            entry: req.body.answer.entry,
+            likes: req.body.answer.likes,
+            userId: req.user.id,
+            questionId: req.body.answer.questionId
     }
     Answer.create(answerEntry)
         .then(answer => res.status(200).json(answer))
@@ -21,10 +25,20 @@ router.post('/create', validateSession, (req, res) => {
 
 //////////update/////////////////
 
-router.put('/:id', validateSession, (req, res) => {
-    answerEntry.update(req.body, {
-      where: { id: req.params.id }
-    })
+router.put('/update/:id', validateSession, (req, res) => {
+    const updateanswerEntry ={
+      title: req.body.answer.title,
+      entry: req.body.answer.entry,
+      likes: req.body.answer.likes,
+      userId: req.user.id,
+      questionId: req.body.answer.questionId
+    }
+    
+    const query = {where: {id: req.params.id}};
+
+    Answer.update(updateanswerEntry, query)
+    
+    
     .then(result => res.status(200).json(result))
     .catch(err => res.status(500).json({ error: err }))
   });
@@ -32,16 +46,26 @@ router.put('/:id', validateSession, (req, res) => {
 
 //////////delete//////////////
 
-router.delete('/:id', validateSession, async (req, res) => {
-    try {
-      const result = await answerEntry.destroy({
-        where: { id: req.params.id }
-      });
+router.delete('/delete/:id', validateSession, function (req, res)  {
+    const query = {where: { id: req.params.id}};
+
+    Answer.destroy(query)
+      .then(() => res.status(200).json({message: "Answer entry removed"}))
+      .catch((err) => res.status(500).json({error: err}));
   
-      res.status(200).json(result);
-    } catch (err) {
-      res.status(500).json({error: err});
-    }
-  })
+});
+  
+  
+  
+  //   try {
+  //     const result = await answerEntry.destroy({
+  //       where: { id: req.params.id }
+  //     });
+  
+  //     res.status(200).json(result);
+  //   } catch (err) {
+  //     res.status(500).json({error: err});
+  //   }
+  // })
 
 module.exports = router;
