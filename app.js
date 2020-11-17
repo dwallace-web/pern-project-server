@@ -15,12 +15,16 @@ app.use(Express.static(__dirname + '/public'));
 
 app.get('/', (request, response) => response.render('index'));
 
-const usercontroller = require('./controllers/usercontroller')
+const usercontroller = require('./controllers/userController')
 app.use('/user', usercontroller)
 
-const questioncontroller = require('./controllers/questioncontroller')
-app.use('question', questioncontroller)
+const questioncontroller = require('./controllers/questionController')
+app.use('/question', questioncontroller)
+
+const answercontroller = require('./controllers/answerController')
+app.use('/answer', answercontroller)
 
 //7. import middleware -> CORS headers and validate session
+
 
 app.listen(process.env.PORT, () => console.log(`App is listening on the Port number: ${process.env.PORT}`));
