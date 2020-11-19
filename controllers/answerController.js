@@ -8,7 +8,7 @@ const Question = require('../db').import('../models/question')
 
 ///////////create answer entry /////////////////////
 
-router.post('/create', validateSession, (req, res) => {
+router.post('/', validateSession, (req, res) => {
     const answerEntry = {
         title: req.body.answer.title,
         entry: req.body.answer.entry,

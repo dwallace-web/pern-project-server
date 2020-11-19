@@ -15,10 +15,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         owner: {
-
             type: DataTypes.INTEGER,
-            // allowNull: false
-
+            allowNull: false
         }
        
     });

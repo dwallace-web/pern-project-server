@@ -23,7 +23,7 @@ router.post('/', validateSession, (req, res) => {
         category: req.body.question.category,
         entry: req.body.question.entry,
         owner: req.user.id,
-        userId: req.user.id
+
     }
     Question.create(questionEntry)
         .then(question => res.status(200).json(question))
@@ -32,13 +32,12 @@ router.post('/', validateSession, (req, res) => {
 
 /* ***************EDIT QUESTIONS************** */
 
-router.put("/:entryId", validateSession, function (req, res) {
-    const updateQuestionEntry = {
-        title: req.body.question.title,
-        category: req.body.question.category,
-        entry: req.body.question.entry,
-        questionId: req.body.question.id
-    };
+    router.put("/update/:entryId", validateSession, function (req, res) {
+        const updateQuestionEntry = {
+            title: req.body.question.title,
+            category: req.body.question.category,
+            entry: req.body.question.entry,
+        };
     
     const query = { where: { id: req.params.entryId, owner: req.user.id } };
 
@@ -50,7 +49,7 @@ router.put("/:entryId", validateSession, function (req, res) {
 
 /* ***************DELETE QUESTIONS************** */
 
-router.delete("/:entryId", validateSession, function (req, res) {
+router.delete("delete/:entryId", validateSession, function (req, res) {
     
     const query = { where: { id: req.params.entryId, owner: req.user.id } };
 
