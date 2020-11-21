@@ -25,6 +25,7 @@ router.post('/', validateSession, (req, res) => {
         category: req.body.question.category,
         entry: req.body.question.entry,
         owner: req.user.id,
+        userId: req.user.id,
     }
     Question.create(questionEntry)
         .then(question => res.status(200).json(question))
@@ -56,9 +57,9 @@ router.put("/:id", validateSession, function (req, res) {
 
 /* ***************DELETE QUESTIONS************** */
 
-router.delete("/:entryId", validateSession, function (req, res) {
+router.delete("/delete/:id", validateSession, function (req, res) {
     
-    const query = { where: { id: req.params.entryId, owner: req.user.id } };
+    const query = { where: { id: req.params.id} };
 
     Question.destroy(query)
         .then(() => res.status(200).json({ message: "Question Entry Removed" }))

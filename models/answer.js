@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
 
+        entry: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+
         likes: {
             type: DataTypes.INTEGER,
             allowNull: true,
