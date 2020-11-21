@@ -4,11 +4,22 @@ const User = require('../db').import('../models/user');
 // const jwt = require('jsonwebtoken');
 
 const Answer = require('../db').import('../models/answer');
-const validateSession = require('../middleware/validate-session')
-const Question = require('../db').import('../models/question')
 
 
 
+//View Answers by question
+router.get('/answers/:questionId', function (req, res) {
+  
+  // let questionId =  req.body.answer.answerId ;
+  
+  Answer.findAll({
+      where: { questionId: req.params.questionId }
+  })
+      .then(questions => res.status(200).json(questions))
+      .catch(err => resstatus(500).json({ error: err }))
+});
+
+const validateSession = require('../middleware/validate-session');
 
 ///////////create answer entry /////////////////////
 
