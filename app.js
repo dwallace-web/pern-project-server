@@ -22,6 +22,7 @@ const questioncontroller = require('./controllers/questionController')
 app.use('/question', questioncontroller)
 
 const answercontroller = require('./controllers/answerController')
+
 app.use('/answer', answercontroller)
 
 //7. import middleware -> CORS headers and validate session
