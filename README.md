@@ -12,9 +12,13 @@ You need to have node_modules and proper project dependencies installed. Run npm
 
 Access to the following endpoints is available:
 
-USER Specific
-/user/signup	POST	Allows a new user to be created with a username and password.
-/user/signin	    POST	   Allows log in with an existing user.
-
+POST User Sign In 
+POST User Sign Up
+POST create question
+get view questions
+put edit question
+post create answer
+get view answers
+del question
 
  -->
