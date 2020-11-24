@@ -32,14 +32,14 @@ router.post('/', validateSession, (req, res) => {
 
 /* ***************EDIT QUESTIONS************** */
 
-    router.put("/update/:entryId", validateSession, function (req, res) {
+    router.put("/:id", validateSession, function (req, res) {
         const updateQuestionEntry = {
             title: req.body.question.title,
             category: req.body.question.category,
             entry: req.body.question.entry,
         };
     
-    const query = { where: { id: req.params.entryId, owner: req.user.id } };
+    const query = { where: { id: req.params.id, owner: req.user.id } };
 
     Question.update(updateQuestionEntry, query)
         .then(questions => res.status(200).json({message: 'Question sucessfully edited'}))
