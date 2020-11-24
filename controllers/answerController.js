@@ -16,7 +16,7 @@ router.get('/answers/:questionId', function (req, res) {
       where: { questionId: req.params.questionId }
   })
       .then(questions => res.status(200).json(questions))
-      .catch(err => resstatus(500).json({ error: err }))
+      .catch(err => res.status(500).json({ error: err }))
 });
 
 const validateSession = require('../middleware/validate-session');
