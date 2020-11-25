@@ -29,28 +29,27 @@ router.post('/signin', (req, res) => {
             username: req.body.username
         }
     })
-        .then(user => {
-            if (user) {
-                bcrypt.compare(req.body.password, user.password, (err, matches) => {
-                    if (matches) {
-                        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '14d' });
+    .then(user => {
+        if (user) {
+            bcrypt.compare(req.body.password, user.password, (err, matches) => {
+                if (matches) {
+                    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '14d' });
 
-                        res.status(200).json({
-                            user: user,
-                            message: "Q&A user has been authenticated",
-                            sessionToken: token
-                        })
+                    res.status(200).json({
+                        user: user,
+                        message: "Q&A user has been authenticated",
+                        sessionToken: token
+                    })
 
-                        
-                    } else {
-                        res.status(500).json({ error: "password mismatch" })
-                    }
-                })
+                } else {
+                    res.status(500).json({ error: "password mismatch" })
+                }
+            })
 
-            } else {
-                res.status(500).json({ error: "user not found" })
-            }
-        })
+        } else {
+            res.status(500).json({ error: "user not found" })
+        }
+    })
         .catch(err => res.status(500).json({ error: "database error" }));
 });
 
